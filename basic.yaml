@@ -1,0 +1,59 @@
+# You can find control table of Dynamixel on emanual (http://emanual.robotis.com/#control-table)
+# Control table item has to be set Camel_Case and not included whitespace
+# You are supposed to set at least Dynamixel ID
+1:
+  ID: 1
+  Return_Delay_Time: 0
+2:
+  ID: 2
+  Return_Delay_Time: 0
+3:
+  ID: 3
+  Return_Delay_Time: 0
+4:
+  ID: 4
+  Return_Delay_Time: 0
+5:
+  ID: 5
+  Return_Delay_Time: 0
+6:
+  ID: 6
+  Return_Delay_Time: 0
+7:
+  ID: 7
+  Return_Delay_Time: 0
+8:
+  ID: 8
+  Return_Delay_Time: 0
+9:
+  ID: 9
+  Return_Delay_Time: 0
+10:
+  ID: 10
+  Return_Delay_Time: 0
+11:
+  ID: 11
+  Return_Delay_Time: 0
+12:
+  ID: 12
+  Return_Delay_Time: 0
+13:
+  ID: 13
+  Return_Delay_Time: 0
+14:
+  ID: 14
+  Return_Delay_Time: 0
+15:
+  ID: 15
+  Return_Delay_Time: 0
+16:
+  ID: 16
+  Return_Delay_Time: 0
+17:
+  ID: 17
+  Return_Delay_Time: 0
+18:
+  ID: 18
+  Return_Delay_Time: 0
+  
+
