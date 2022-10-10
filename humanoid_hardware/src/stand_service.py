@@ -9,7 +9,7 @@ class PositionHolder():
         self.steps_to_stand = 10
         rospy.Subscriber('/dynamixel_workbench/dynamixel_state', DynamixelStateList, self.position_actualizer)
         #WARTOSC Z INDEKSEM 0 NIE JEST UZYWANA,ID SERWA POKRYWA SIE Z ID W TABLIC SERWO JEDEN TO WARTOSC self.stand_values[1]
-        self.stand_values = np.array([0, 2048, 2048, 1400, 2770, 1665, 2048, 2048, 2048, 1400, 2770, 1665, 2048])
+        self.stand_values = np.array([0, 2048, 2048, 1400, 2770, 1665, 2048, 2048, 2048, 1400, 2770, 1665, 2048, 2400, 2048, 2048, 2400, 2048, 2048])
         self.one_servo_value = DynamixelCommandRequest()
         self.one_servo_value.addr_name = 'Goal_Position'
         self.service = rospy.ServiceProxy('/dynamixel_workbench/dynamixel_command', DynamixelCommand)
@@ -31,9 +31,15 @@ class PositionHolder():
             "9": (500, 2600),
             "10": (1250, 3500),
             "11": (1023, 2500),
-            "12": (1023, 3073)
+            "12": (1023, 3073),
+            "13": (1950, 4050),
+            "14": (2048, 4050),
+            "15": (800, 3300),
+            "16": (1950, 4050),
+            "17": (2048, 4050),
+            "18": (800, 3300)
         }
-        if servo_value<self.value_threshold[str(servo_id)][1] or servo_value<self.value_threshold[str(servo_id)][0]:
+        if servo_value<self.value_threshold[str(servo_id)][1] or servo_value>self.value_threshold[str(servo_id)][0]:            #tu nie wiem czy to był blad ale znak nierownosci w 2 warunku był taki sam jak w 1
             self.one_servo_value.id = servo_id
             self.one_servo_value.value = servo_value
             self.service(self.one_servo_value)
@@ -42,7 +48,7 @@ class PositionHolder():
             print("Desired Servo value will do colision")
 
     def position_actualizer(self,dynamixel_state_msg):
-        number_of_servos=12
+        number_of_servos=18
         self.dynamixel_state_msg=dynamixel_state_msg
         self.position_array=np.zeros(number_of_servos+1)
         #Serwa wczytywane sa randomowo,niezbedne jest korzystanie z ID serw
@@ -70,7 +76,7 @@ class PositionHolder():
     #         time.sleep(0.05)
 
     def try_to_stand(self):
-        number_of_servos=13
+        number_of_servos=19
         for actual_step_number in range(self.steps_to_stand):
             change_value = (self.stand_values - self.position_array) / (self.steps_to_stand-actual_step_number)
             for servo in range(number_of_servos):
