@@ -9,7 +9,7 @@ class PositionHolder():
         self.steps_to_stand = 10
         rospy.Subscriber('/dynamixel_workbench/dynamixel_state', DynamixelStateList, self.position_actualizer)
         #WARTOSC Z INDEKSEM 0 NIE JEST UZYWANA,ID SERWA POKRYWA SIE Z ID W TABLIC SERWO JEDEN TO WARTOSC self.stand_values[1]
-        self.stand_values = np.array([0, 2048, 2048, 1400, 2770, 1665, 2048, 2048, 2048, 1400, 2770, 1665, 2048, 2400, 2048, 2048, 2400, 2048, 2048])
+        self.stand_values = np.array([0, 2048, 2048, 1400, 2770, 1665, 2048, 2048, 2048, 1400, 2770, 1665, 2048, 1800, 2048, 2048, 2400, 2048, 2048])
         self.one_servo_value = DynamixelCommandRequest()
         self.one_servo_value.addr_name = 'Goal_Position'
         self.service = rospy.ServiceProxy('/dynamixel_workbench/dynamixel_command', DynamixelCommand)
@@ -32,7 +32,7 @@ class PositionHolder():
             "10": (1250, 3500),
             "11": (1023, 2500),
             "12": (1023, 3073),
-            "13": (1950, 4050),
+            "13": (0, 2100),
             "14": (2048, 4050),
             "15": (800, 3300),
             "16": (1950, 4050),
