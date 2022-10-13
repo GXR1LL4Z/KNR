@@ -39,7 +39,7 @@ class PositionHolder():
             "17": (2048, 4050),
             "18": (800, 3300)
         }
-        if servo_value<self.value_threshold[str(servo_id)][1] or servo_value>self.value_threshold[str(servo_id)][0]:            #tu nie wiem czy to był blad ale znak nierownosci w 2 warunku był taki sam jak w 1
+        if servo_value<self.value_threshold[str(servo_id)][1] and servo_value>self.value_threshold[str(servo_id)][0]:            #tu nie wiem czy to był blad ale znak nierownosci w 2 warunku był taki sam jak w 1
             self.one_servo_value.id = servo_id
             self.one_servo_value.value = servo_value
             self.service(self.one_servo_value)
